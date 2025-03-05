@@ -13,6 +13,7 @@ For GitHub flow, feature branches are merged into the main branch and the main b
 Copy [sql-review.yml](/workflows/sql-review.yml) to your repository.
 
 Modify the environment variables to match your setup.
+
 ```yml
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # set GITHUB_TOKEN because the 'Check release' step needs it to comment the pull request with check results.
@@ -32,6 +33,7 @@ The migration filename should comply to the naming scheme described in [bytebase
 Copy [release.yml](/workflows/release.yml) to your repository.
 
 Modify the environment variables to match your setup.
+
 ```yml
     env:
       BYTEBASE_URL: https://demo.bytebase.com
