@@ -19,7 +19,7 @@ jobs:
           echo "Upload done!"
   deploy_to_test:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # use self-hosted machines if your Bytebase runs in internal networks.
     environment: test
     env:
       BYTEBASE_URL: https://demo.bytebase.com

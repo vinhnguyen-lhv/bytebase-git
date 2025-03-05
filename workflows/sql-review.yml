@@ -9,7 +9,7 @@ jobs:
   check_release_on_test:
     permissions:
         pull-requests: write # write permission required to allow the action writes the check results to the comment.
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # use self-hosted machines if your Bytebase runs in internal networks.
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # set GITHUB_TOKEN because the 'Check release' step needs it to comment the pull request with check results.
       BYTEBASE_URL: https://demo.bytebase.com
