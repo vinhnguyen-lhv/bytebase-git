@@ -4,13 +4,13 @@ This repository demonstrates how to use Bytebase and GitHub actions to do databa
 
 For GitHub flow, feature branches are merged into the main branch and the main branch is deployed to the, for example, "test" and "prod" environments in a deploy pipeline.
 
-[sql-review.yml](/workflows/sql-review.yml) checks the SQL migration files against the databases when pull requests are created.
+[sql-review.yml](/.github/workflows/sql-review.yml) checks the SQL migration files against the databases when pull requests are created.
 
-[release.yml](/workflows/release.yml) builds the code and then for each environment migrate the databases and deploy the code. Using [environments with protection rules](https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-deployments/managing-environments-for-deployment#required-reviewers), it can deploy to the test environment automatically and push to the prod environment after approval.
+[release.yml](/.github/workflows/release.yml) builds the code and then for each environment migrate the databases and deploy the code. Using [environments with protection rules](https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-deployments/managing-environments-for-deployment#required-reviewers), it can deploy to the test environment automatically and push to the prod environment after approval.
 
 ## How to configure sql-review.yml
 
-Copy [sql-review.yml](/workflows/sql-review.yml) to your repository.
+Copy [sql-review.yml](/.github/workflows/sql-review.yml) to your repository.
 
 Modify the environment variables to match your setup.
 
@@ -30,7 +30,7 @@ The migration filename should comply to the naming scheme described in [bytebase
 
 ## How to configure release.yml
 
-Copy [release.yml](/workflows/release.yml) to your repository.
+Copy [release.yml](/.github/workflows/release.yml) to your repository.
 
 Modify the environment variables to match your setup.
 
