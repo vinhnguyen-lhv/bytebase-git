@@ -17,7 +17,7 @@ jobs:
           echo "Build done!"
           echo "Uploading..."
           echo "Upload done!"
-  deploy_to_test:
+  deploy-to-test:
     needs: build
     runs-on: ubuntu-latest # use self-hosted machines if your Bytebase runs in internal networks.
     environment: test
@@ -26,12 +26,12 @@ jobs:
       BYTEBASE_SERVICE_ACCOUNT: ci@service.bytebase.com
       BYTEBASE_PROJECT: "projects/project-sample"
       # The Bytebase rollout pipeline will deploy to 'test' and 'prod' environments.
-      # 'deploy_to_test' job rollouts the 'test' stage and 'deploy_to_prod' job rollouts the 'prod' stage.
+      # 'deploy-to-test' job rollouts the 'test' stage and 'deploy-to-prod' job rollouts the 'prod' stage.
       BYTEBASE_TARGETS: "instances/test-sample-instance/databases/hr_test,instances/prod-sample-instance/databases/hr_prod"
       FILE_PATTERN: "migrations/*.sql"
     outputs:
-      bytebase_plan: ${{ steps.create_plan.outputs.plan }}
-      deployment_required: ${{ steps.create_plan.outputs.deployment-required }}
+      bytebase-plan: ${{ steps.create-plan.outputs.plan }}
+      deployment-required: ${{ steps.create-plan.outputs.deployment-required }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -43,7 +43,7 @@ jobs:
           service-key: ${{ env.BYTEBASE_SERVICE_ACCOUNT }}
           service-secret: ${{secrets.BYTEBASE_SERVICE_ACCOUNT_SECRET}} # Please use secrets for sensitive data in production.
       - name: Create release
-        id: create_release
+        id: create-release
         uses: bytebase/create-release-action@v1
         with:
           url: ${{ env.BYTEBASE_URL }}
@@ -55,36 +55,36 @@ jobs:
           targets: ${{ env.BYTEBASE_TARGETS }}
           validate-only: false
       - name: Create plan
-        id: create_plan
+        id: create-plan
         uses: bytebase/create-plan-from-release-action@v1
         with:
           url: ${{ env.BYTEBASE_URL }}
           token: ${{ steps.login.outputs.token }}
           project: ${{ env.BYTEBASE_PROJECT }}
-          release: ${{ steps.create_release.outputs.release }}
+          release: ${{ steps.create-release.outputs.release }}
           targets: ${{ env.BYTEBASE_TARGETS }}
           check-plan: "SKIP"
       - name: Rollout
         id: rollout
         uses: bytebase/rollout-action@v1
-        if: ${{ steps.create_plan.outputs.deployment-required == 'true' }}
+        if: ${{ steps.create-plan.outputs.deployment-required == 'true' }}
         with:
           url: ${{ env.BYTEBASE_URL }}
           token: ${{ steps.login.outputs.token }}
-          plan: ${{ steps.create_plan.outputs.plan }}
+          plan: ${{ steps.create-plan.outputs.plan }}
           target-stage: test # the environment resource id.
       - name: Deploy app
         run: |
           echo "Deploying app to test environment..."
           echo "Deploy app to test environment done!"
   deploy_to_prod:
-    needs: deploy_to_test
+    needs: deploy-to-test
     runs-on: ubuntu-latest
     environment: prod
     env:
       BYTEBASE_URL: https://demo.bytebase.com
       BYTEBASE_SERVICE_ACCOUNT: ci@service.bytebase.com
-    if: ${{ needs.deploy_to_test.outputs.deployment-required == 'true' }}
+    if: ${{ needs.deploy-to-test.outputs.deployment-required == 'true' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -101,7 +101,7 @@ jobs:
         with:
           url: ${{ env.BYTEBASE_URL }}
           token: ${{ steps.login.outputs.token }}
-          plan: ${{ needs.deploy_to_test.outputs.bytebase_plan }}
+          plan: ${{ needs.deploy-to-test.outputs.bytebase-plan }}
           target-stage: prod # the environment resource id.
       - name: Deploy app
         run: |
