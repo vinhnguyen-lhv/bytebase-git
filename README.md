@@ -26,7 +26,8 @@ Modify the environment variables to match your setup.
 
 Set your service account password in the repository secrets setting with the name `BYTEBASE_SERVICE_ACCOUNT_SECRET`.
 
-The migration filename should comply to the naming scheme described in [bytebase/create-release-action](https://github.com/bytebase/create-release-action/tree/main).
+> [!WARNING]
+> The migration filename SHOULD comply to the naming scheme described in [bytebase/create-release-action](https://github.com/bytebase/create-release-action/tree/main).
 
 ## How to configure release.yml
 
@@ -49,4 +50,5 @@ In the repository environments setting, create two environments: "test" and "pro
 
 Set your service account password in the repository secrets setting with the name `BYTEBASE_SERVICE_ACCOUNT_SECRET`.
 
-The migration filename should comply to the naming scheme described in [bytebase/create-release-action](https://github.com/bytebase/create-release-action/tree/main).
+> [!WARNING]
+> The migration filename SHOULD comply to the naming scheme described in [bytebase/create-release-action](https://github.com/bytebase/create-release-action/tree/main).
