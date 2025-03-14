@@ -1,1 +1,1 @@
-select pg_sleep(200000)
+select pg_sleep(100000)
