@@ -1,1 +1,0 @@
-ALTER TABLE IF EXISTS ticket ADD IF NOT EXISTS release_date DATE;
