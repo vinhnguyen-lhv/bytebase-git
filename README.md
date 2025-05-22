@@ -8,7 +8,7 @@ For GitHub flow, feature branches are merged into the main branch and the main b
 
 [release-action.yml](/.github/workflows/release-action.yml) builds the code and then for each environment migrate the databases and deploy the code. Using [environments with protection rules](https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-deployments/managing-environments-for-deployment#required-reviewers), it can deploy to the test environment automatically and push to the prod environment after approval.
 
-## Use bytebase/bytebase-action (recommended)
+## Use bytebase/bytebase-action
 
 The README of bytebase/bytebase-action can be found at [README](https://github.com/bytebase/bytebase/blob/main/action/README.md).
 
