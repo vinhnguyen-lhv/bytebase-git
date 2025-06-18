@@ -1,4 +1,0 @@
-CREATE TABLE t1 (
- id SERIAL PRIMARY KEY,
- name TEXT
-);

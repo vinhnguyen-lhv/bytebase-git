@@ -13,7 +13,7 @@ jobs:
         pull-requests: write # write permission required to allow the action writes the check results to the comment.
     runs-on: ubuntu-latest # use self-hosted machines if your Bytebase runs in internal networks.
     container:
-      image: docker://bytebase/bytebase-action:latest
+      image: docker://bytebase/bytebase-action:3.7.0
     steps:
       - name: Checkout
         uses: actions/checkout@v4
