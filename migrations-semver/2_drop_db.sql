@@ -1,0 +1,1 @@
+DROP DATABASE prd_lis;
