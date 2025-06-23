@@ -1,6 +1,6 @@
 services:
   bytebase:
-    image: bytebase/bytebase:3.7.1
+    image: bytebase/bytebase:latest
     container_name: bytebase
     init: true
     ports:
