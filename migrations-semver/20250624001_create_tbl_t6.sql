@@ -1,0 +1,4 @@
+CREATE TABLE t6 (
+      id SERIAL PRIMARY KEY,
+      name TEXT NOT NULL
+   );
