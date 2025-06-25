@@ -1,4 +1,4 @@
-CREATE TABLE t7 (
+CREATE TABLE t8 (
       id SERIAL PRIMARY KEY,
       name TEXT NOT NULL
    );
